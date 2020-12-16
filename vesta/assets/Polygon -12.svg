@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: none;
+      }
+
+      .cls-3 {
+        fill: #74b62e;
+      }
+    </style>
+  </defs>
+  <g id="Polygon_6" data-name="Polygon 6" class="cls-1">
+    <path class="cls-2" d="M7,0l7,10H0Z"/>
+    <path class="cls-3" d="M 7 1.743788719177246 L 1.920652389526367 9 L 12.07934761047363 9 L 7 1.743788719177246 M 7 0 L 14 10 L 0 10 L 7 0 Z"/>
+  </g>
+</svg>
