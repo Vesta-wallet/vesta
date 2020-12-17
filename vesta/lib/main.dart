@@ -103,17 +103,56 @@ class SectionTitle extends StatelessWidget {
 // Profile page
 Widget homePage = Column(
   children: [
+    // Home Value
+    SectionTitle(title: "VALUE"),
+    homeValueContainer,
+    // List of Assets
+    SectionTitle(title: "LIST OF ASSETS"),
+  ],
+);
+
+// Wallet page
+Widget walletPage = Column(children: [
+  //
+  walletValueContainer,
+  // Turn on/off coins here
+  SectionTitle(title: "ACTIVITY"),
+  transactionActivity,
+]);
+
+// Transactions page
+Widget transactionPage = Column(
+  children: [
     // Access settings
+    SectionTitle(title: "PROFILE"),
     profileSettings,
     // Turn on/off coins herejfc
+    SectionTitle(title: "ENABLE/DISABLE ASSESTS"),
     enableDisableAssets,
     //
   ],
 );
 
+// Value Container
+Widget homeValueContainer = ColoredBox(
+    color: Color(0xff404040),
+    //padding: const EdgeInsets.all(32),
+    child: Container(
+        padding: const EdgeInsets.all(32),
+        child: (Text(
+            // This will need to be passed the actual value of the portfolio
+            // It will be $_portfolioValue at some point
+            '\u0024 89,563.54',
+            softWrap: false,
+            // Set the style
+            style: TextStyle(
+              color: Color(0xffDFDFDF),
+              fontSize: 25,
+            )))));
+
 Widget profileSettings = Expanded(
     // Needs to have "Profile"
-    child: (SectionTitle(title: "PROFILE"))
+    child: (Text("Profile Settings will go here"))
     // Menu items
     // Security
     // Settings
@@ -121,16 +160,12 @@ Widget profileSettings = Expanded(
     );
 
 Widget enableDisableAssets = Expanded(
-    child: (SectionTitle(title: "ENABLE/DISABLE ASSETS")
+    child: (
         // This is where all the swtiches for enabling and disabling things will go
-        ));
-
-Widget walletPage = Column(children: [
-  valueContainer,
-]);
+        Text("Asset Swtiches will go here")));
 
 // Value Container
-Widget valueContainer = ColoredBox(
+Widget walletValueContainer = ColoredBox(
     color: Color(0xff404040),
     //padding: const EdgeInsets.all(32),
     child: Container(
@@ -138,7 +173,7 @@ Widget valueContainer = ColoredBox(
       child: Text(
           // This will need to be passed the actual value of the portfolio
           // It will be $_portfolioValue at some point
-          '\u0024 89,563.54',
+          '\u0024 31,568.45 USDT',
           softWrap: false,
           // Set the style
           style: TextStyle(
@@ -147,14 +182,6 @@ Widget valueContainer = ColoredBox(
           )),
     ));
 
-// Profile page
-Widget transactionPage = Column(
-  children: [
-    // Turn on/off coins herejfc
-    transactionActivity,
-    //
-  ],
-);
-
 // Transaction Activity
-Widget transactionActivity = Expanded(child: (SectionTitle(title: "ACTIVITY")));
+Widget transactionActivity =
+    Expanded(child: Text("Transaction activity will go here"));
