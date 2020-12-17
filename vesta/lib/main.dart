@@ -15,9 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    Text(
-      "Profile",
-    ),
+    profilePage,
     valueContainer,
     Text(
       "Transactions",
@@ -65,6 +63,53 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+// This is the widget
+class SectionTitle extends StatelessWidget {
+  //
+  final String title;
+
+  SectionTitle({@required this.title});
+
+  @override
+  Widget build(BuildContext content) {
+    return Text(
+        // Add our title
+        title,
+        // Align our text to the left
+        textAlign: TextAlign.left,
+        style: TextStyle(
+          fontSize: 15,
+          color: Color(0xff74B62E),
+          fontWeight: FontWeight.bold,
+        ));
+  }
+}
+
+// Profile page
+Widget profilePage = Column(
+  children: [
+    // Access settings
+    profileSettings,
+    // Turn on/off coins herejfc
+    enableDisableAssets,
+    //
+  ],
+);
+
+Widget profileSettings = Expanded(
+    // Needs to have "Profile"
+    child: (SectionTitle(title: "PROFILE"))
+    // Menu items
+    // Security
+    // Settings
+    // Support
+    );
+
+Widget enableDisableAssets = Expanded(
+    child: (SectionTitle(title: "ENABLE/DISABLE ASSETS")
+        // This is where all the swtiches for enabling and disabling things will go
+        ));
 
 // Value Container
 Widget valueContainer = ColoredBox(
