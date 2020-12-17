@@ -18,9 +18,7 @@ class _HomePageState extends State<HomePage> {
     Text(
       "Profile",
     ),
-    Text(
-      "Assets",
-    ),
+    valueContainer,
     Text(
       "Transactions",
     )
@@ -67,3 +65,17 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+// Value Container
+Widget valueContainer = ColoredBox(
+    color: Colors.red,
+    //padding: const EdgeInsets.all(32),
+    child: Container(
+      padding: const EdgeInsets.all(32),
+      child: Text(
+        // This will need to be passed the actual value of the portfolio
+        // It will be $_portfolioValue at some point
+        '\u0024 89,563.54',
+        softWrap: false,
+      ),
+    ));
