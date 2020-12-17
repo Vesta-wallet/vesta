@@ -39,6 +39,8 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         // Set the background color of the navigation bar
         backgroundColor: Color(0xff74B62E),
+        // Set the unselected color of the icons
+        unselectedItemColor: Color(0xff141414),
         // Hide the labels of the selected menu item because we don't need them
         showSelectedLabels: false,
         showUnselectedLabels: false,
