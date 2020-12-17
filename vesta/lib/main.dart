@@ -68,14 +68,18 @@ class _HomePageState extends State<HomePage> {
 
 // Value Container
 Widget valueContainer = ColoredBox(
-    color: Colors.red,
+    color: Color(0xff404040),
     //padding: const EdgeInsets.all(32),
     child: Container(
       padding: const EdgeInsets.all(32),
       child: Text(
-        // This will need to be passed the actual value of the portfolio
-        // It will be $_portfolioValue at some point
-        '\u0024 89,563.54',
-        softWrap: false,
-      ),
+          // This will need to be passed the actual value of the portfolio
+          // It will be $_portfolioValue at some point
+          '\u0024 89,563.54',
+          softWrap: false,
+          // Set the style
+          style: TextStyle(
+            color: Color(0xffDFDFDF),
+            fontSize: 25,
+          )),
     ));
