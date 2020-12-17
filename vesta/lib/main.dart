@@ -15,11 +15,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    profilePage,
-    valueContainer,
-    Text(
-      "Transactions",
-    )
+    homePage,
+    wal,
+    transactionPage,
   ];
 
   void onTabTapped(int index) {
@@ -75,8 +73,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// Make our app bar
-
 // This is the widget
 class SectionTitle extends StatelessWidget {
   //Define our input variable types
@@ -105,7 +101,7 @@ class SectionTitle extends StatelessWidget {
 }
 
 // Profile page
-Widget profilePage = Column(
+Widget homePage = Column(
   children: [
     // Access settings
     profileSettings,
@@ -129,6 +125,10 @@ Widget enableDisableAssets = Expanded(
         // This is where all the swtiches for enabling and disabling things will go
         ));
 
+Widget walletPage = Column(children: [
+  valueContainer,
+]);
+
 // Value Container
 Widget valueContainer = ColoredBox(
     color: Color(0xff404040),
@@ -146,3 +146,15 @@ Widget valueContainer = ColoredBox(
             fontSize: 25,
           )),
     ));
+
+// Profile page
+Widget transactionPage = Column(
+  children: [
+    // Turn on/off coins herejfc
+    transactionActivity,
+    //
+  ],
+);
+
+// Transaction Activity
+Widget transactionActivity = Expanded(child: (SectionTitle(title: "ACTIVITY")));
