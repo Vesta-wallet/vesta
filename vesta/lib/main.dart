@@ -13,20 +13,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w500);
   final List<Widget> _children = [
     Text(
-      "Home",
-      style: optionStyle,
-    ),
-    Text(
-      "Messages",
-      style: optionStyle,
-    ),
-    Text(
       "Profile",
-      style: optionStyle,
+    ),
+    Text(
+      "Assets",
+    ),
+    Text(
+      "Transactions",
     )
   ];
 
@@ -40,21 +35,29 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(child: _children[_currentIndex]),
+      // Make our bottom navigation bar
       bottomNavigationBar: BottomNavigationBar(
+        // Set the background color of the navigation bar
+        backgroundColor: Color(0xff74B62E),
+        // Hide the labels of the selected menu item because we don't need them
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        // Sets the current index of the page we are on
         currentIndex: _currentIndex,
+        // Update our state onTabTap and change the index
         onTap: onTabTapped,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Profile',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.mail),
-            label: 'Messages',
+            label: 'Assets',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Transactions',
           ),
         ],
       ),
