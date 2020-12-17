@@ -31,6 +31,17 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        // This needs to be the logo
+        leading: Icon(Icons.menu),
+        actions: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+          ),
+          Icon(Icons.more_vert),
+        ],
+        backgroundColor: Color(0xff141414),
+      ),
       body: Center(child: _children[_currentIndex]),
       // Make our bottom navigation bar
       bottomNavigationBar: BottomNavigationBar(
@@ -64,14 +75,18 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+// Make our app bar
+
 // This is the widget
 class SectionTitle extends StatelessWidget {
-  //
+  //Define our input variable types
   final String title;
 
   SectionTitle({@required this.title});
 
+  // Override the default StatelessWidget
   @override
+  // Build the actual widget
   Widget build(BuildContext content) {
     return Text(
         // Add our title
@@ -79,8 +94,11 @@ class SectionTitle extends StatelessWidget {
         // Align our text to the left
         textAlign: TextAlign.left,
         style: TextStyle(
+          // Font Size
           fontSize: 15,
+          // Set color - needs to be a theme based variable
           color: Color(0xff74B62E),
+          // Set our font weight
           fontWeight: FontWeight.bold,
         ));
   }
