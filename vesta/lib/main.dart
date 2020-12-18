@@ -192,7 +192,7 @@ class _AssetWidgetState extends State<AssetWidget> {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: Color(0xff4040404),
+      color: Color(0xff404040),
       child: Row(
         children: [
           // Asset Icon - This should be a custom icon but I'm not sure how to pass it down yet
