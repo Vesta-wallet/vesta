@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         // This needs to be the logo
-        leading: Icon(Icons.menu),
+        leading: Icon(MyFlutterApp.logo_vesta),
         actions: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
