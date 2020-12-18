@@ -108,6 +108,7 @@ Widget homePage = Column(
     homeValueContainer,
     // List of Assets
     SectionTitle(title: "LIST OF ASSETS"),
+    listOfAssets,
   ],
 );
 
@@ -149,6 +150,40 @@ Widget homeValueContainer = ColoredBox(
               color: Color(0xffDFDFDF),
               fontSize: 25,
             )))));
+
+// List of Assets Container
+Widget listOfAssets = Container(
+    // Ticker, Name, Image url, coin quantity
+    child: AssetWidget(
+        ticker: "BTC", name: "Bitcoin", imgUrl: "imageUrl", quantity: 11101));
+
+// [
+//   {
+//     "name": "Bitcoin",
+//     "network": "BTC",
+//     "image": "vesta\vesta\assets\l_bitcoin.svg",
+//     "enabled": true
+//   }
+// ]
+
+// Asset Widget
+class AssetWidget extends StatefulWidget {
+  final String ticker;
+  final String name;
+  final String imgUrl;
+  final double quantity;
+
+  const AssetWidget({this.ticker, this.name, this.imgUrl, this.quantity});
+  @override
+  _AssetWidgetState createState() => _AssetWidgetState();
+}
+
+class _AssetWidgetState extends State<AssetWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Text(widget.ticker);
+  }
+}
 
 Widget profileSettings = Expanded(
     // Needs to have "Profile"
