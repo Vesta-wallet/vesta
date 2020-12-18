@@ -3,7 +3,7 @@ import 'package:vesta/assets/pc_icons.dart';
 
 void main() {
   runApp(MaterialApp(
-    title: "Vestas",
+    title: "Vesta",
     home: HomePage(),
   ));
 }
@@ -30,14 +30,18 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF141414),
       appBar: AppBar(
         // This needs to be the logo
-        leading: Icon(MyFlutterApp.logo_vesta),
+        leading: Icon(
+          MyFlutterApp.logo_vesta,
+          color: Color(0xFF74B62E),
+        ),
         actions: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
           ),
-          Icon(Icons.more_vert),
+          Icon(Icons.more_vert, color: Color(0xFF74B62E)),
         ],
         backgroundColor: Color(0xff141414),
       ),
@@ -156,7 +160,11 @@ Widget homeValueContainer = ColoredBox(
 Widget listOfAssets = Container(
     // Ticker, Name, Image url, coin quantity
     child: AssetWidget(
-        ticker: "BTC", name: "Bitcoin", imgUrl: "imageUrl", quantity: 11101));
+        ticker: "BTC",
+        name: "Bitcoin",
+        // Not sure how to make this work
+        // icon: Icon(MyFlutterApp.l_peercoin),
+        quantity: "3.56"));
 
 // [
 //   {
@@ -171,10 +179,11 @@ Widget listOfAssets = Container(
 class AssetWidget extends StatefulWidget {
   final String ticker;
   final String name;
-  final String imgUrl;
-  final double quantity;
+  // final Icon icon;
+  final String quantity;
 
-  const AssetWidget({this.ticker, this.name, this.imgUrl, this.quantity});
+  // const AssetWidget({this.ticker, this.name, this.icon, this.quantity});
+  const AssetWidget({this.ticker, this.name, this.quantity});
   @override
   _AssetWidgetState createState() => _AssetWidgetState();
 }
@@ -182,9 +191,45 @@ class AssetWidget extends StatefulWidget {
 class _AssetWidgetState extends State<AssetWidget> {
   @override
   Widget build(BuildContext context) {
-    return ExpansionPanelList(
-      dividerColor: Color(0xff4040404),
-      // children: [],
+    return ColoredBox(
+      color: Color(0xff4040404),
+      child: Row(
+        children: [
+          // Asset Icon - This should be a custom icon but I'm not sure how to pass it down yet
+          Icon(
+            Icons.star,
+            color: Colors.red[500],
+          ),
+          Expanded(
+            /*1*/
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                /*2*/
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    widget.name,
+                    style: TextStyle(
+                      color: Color(0xFFDFDFDF),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Text(
+                  widget.ticker,
+                  style: TextStyle(
+                    color: Color(0xFFDFDFDF),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          /*3*/
+
+          Text(widget.quantity, style: TextStyle(color: Color(0xFFDFDFDF))),
+        ],
+      ),
     );
   }
 }
