@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vesta/assets/pc_icons.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -56,15 +57,15 @@ class _HomePageState extends State<HomePage> {
         onTap: onTabTapped,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(MyFlutterApp.menu_wallet_black),
             label: 'Profile',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
+            icon: Icon(MyFlutterApp.menu_exchange_black),
             label: 'Assets',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(MyFlutterApp.menu_profile_white),
             label: 'Transactions',
           ),
         ],
