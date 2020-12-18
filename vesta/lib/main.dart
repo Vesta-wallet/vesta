@@ -181,7 +181,10 @@ class AssetWidget extends StatefulWidget {
 class _AssetWidgetState extends State<AssetWidget> {
   @override
   Widget build(BuildContext context) {
-    return Text(widget.ticker);
+    return ExpansionPanelList(
+      dividerColor: Color(0xff4040404),
+      // children: [],
+    );
   }
 }
 
