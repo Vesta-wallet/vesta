@@ -241,12 +241,38 @@ class _AssetWidgetState extends State<AssetWidget> {
 
 Widget profileSettings = Expanded(
   // Needs to have "Profile"
-  child: Text("Profile stuff will go here"),
-  // Menu items
-  // Security
-  // Settings
-  // Support
+  child: Column(
+    // Menu items
+    children: [
+      // Security
+      ProfileSettingsItem(
+          menuItemName: "Security", icon: MyFlutterApp.menu_exchange_black),
+      // Settings
+      ProfileSettingsItem(
+          menuItemName: "Settings", icon: MyFlutterApp.menu_exchange_black),
+      // Support
+      ProfileSettingsItem(
+          menuItemName: "Support", icon: MyFlutterApp.menu_exchange_black),
+    ],
+  ),
 );
+
+class ProfileSettingsItem extends StatelessWidget {
+  final String menuItemName;
+  final IconData icon;
+
+  ProfileSettingsItem({@required this.menuItemName, @required this.icon});
+  @override
+  Widget build(BuildContext content) {
+    return ColoredBox(
+        color: Color(0xff404040),
+        //padding: const EdgeInsets.all(32),
+        child: Container(
+          padding: const EdgeInsets.all(32),
+          child: Text(menuItemName),
+        ));
+  }
+}
 
 Widget enableDisableAssets = Expanded(
   child: EnableDisableAssetWidget(
