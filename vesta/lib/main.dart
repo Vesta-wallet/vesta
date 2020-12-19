@@ -160,10 +160,11 @@ Widget homeValueContainer = ColoredBox(
 Widget listOfAssets = Container(
     // Ticker, Name, Image url, coin quantity
     child: AssetWidget(
+        // Ticker name will go in here eventually
         ticker: "BTC",
         name: "Bitcoin",
         // Not sure how to make this work
-        // icon: Icon(MyFlutterApp.l_peercoin),
+        icon: MyFlutterApp.l_bitcoin,
         quantity: "3.56"));
 
 // [
@@ -180,10 +181,11 @@ class AssetWidget extends StatefulWidget {
   final String ticker;
   final String name;
   // final Icon icon;
+  final IconData icon;
   final String quantity;
 
   // const AssetWidget({this.ticker, this.name, this.icon, this.quantity});
-  const AssetWidget({this.ticker, this.name, this.quantity});
+  const AssetWidget({this.ticker, this.name, this.icon, this.quantity});
   @override
   _AssetWidgetState createState() => _AssetWidgetState();
 }
@@ -197,8 +199,8 @@ class _AssetWidgetState extends State<AssetWidget> {
         children: [
           // Asset Icon - This should be a custom icon but I'm not sure how to pass it down yet
           Icon(
-            Icons.star,
-            color: Colors.red[500],
+            widget.icon,
+            color: Color(0xff141414),
           ),
           Expanded(
             /*1*/
@@ -216,10 +218,13 @@ class _AssetWidgetState extends State<AssetWidget> {
                     ),
                   ),
                 ),
-                Text(
-                  widget.ticker,
-                  style: TextStyle(
-                    color: Color(0xFFDFDFDF),
+                GestureDetector(
+                  //onTap: (),
+                  child: Text(
+                    widget.ticker,
+                    style: TextStyle(
+                      color: Color(0xFFDFDFDF),
+                    ),
                   ),
                 ),
               ],
