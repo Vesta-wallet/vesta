@@ -159,13 +159,22 @@ Widget homeValueContainer = ColoredBox(
 // List of Assets Container
 Widget listOfAssets = Container(
     // Ticker, Name, Image url, coin quantity
-    child: AssetWidget(
-        // Ticker name will go in here eventually
-        ticker: "BTC",
-        name: "Bitcoin",
-        // Not sure how to make this work
-        icon: MyFlutterApp.l_bitcoin,
-        quantity: "3.56"));
+    child: Column(children: [
+  AssetWidget(
+      // Ticker name will go in here eventually
+      ticker: "BTC",
+      name: "Bitcoin",
+      // Not sure how to make this work
+      icon: MyFlutterApp.l_bitcoin,
+      quantity: "3.56"),
+  AssetWidget(
+      // Ticker name will go in here eventually
+      ticker: "PPC",
+      name: "Peercoin",
+      // Not sure how to make this work
+      icon: MyFlutterApp.l_peercoin,
+      quantity: "4443.56"),
+]));
 
 // [
 //   {
@@ -275,7 +284,8 @@ class ProfileSettingsItem extends StatelessWidget {
 }
 
 Widget enableDisableAssets = Expanded(
-  child: EnableDisableAssetWidget(
+    child: Column(children: [
+  EnableDisableAssetWidget(
     // Ticker name will go in here eventually
     ticker: "BTC",
     name: "Bitcoin",
@@ -283,7 +293,15 @@ Widget enableDisableAssets = Expanded(
     icon: MyFlutterApp.l_bitcoin,
     // switchState: true
   ),
-);
+  EnableDisableAssetWidget(
+    // Ticker name will go in here eventually
+    ticker: "PPC",
+    name: "Peercoin",
+    // Not sure how to make this work
+    icon: MyFlutterApp.l_peercoin,
+    // switchState: true
+  ),
+]));
 
 // Asset Widget
 class EnableDisableAssetWidget extends StatefulWidget {
