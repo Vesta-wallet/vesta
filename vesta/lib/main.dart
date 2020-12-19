@@ -240,18 +240,98 @@ class _AssetWidgetState extends State<AssetWidget> {
 }
 
 Widget profileSettings = Expanded(
-    // Needs to have "Profile"
-    child: (Text("Profile Settings will go here"))
-    // Menu items
-    // Security
-    // Settings
-    // Support
-    );
+  // Needs to have "Profile"
+  child: Text("Profile stuff will go here"),
+  // Menu items
+  // Security
+  // Settings
+  // Support
+);
 
 Widget enableDisableAssets = Expanded(
-    child: (
-        // This is where all the swtiches for enabling and disabling things will go
-        Text("Asset Swtiches will go here")));
+  child: EnableDisableAssetWidget(
+    // Ticker name will go in here eventually
+    ticker: "BTC",
+    name: "Bitcoin",
+    // Not sure how to make this work
+    icon: MyFlutterApp.l_bitcoin,
+    // switchState: true
+  ),
+);
+
+// Asset Widget
+class EnableDisableAssetWidget extends StatefulWidget {
+  final String ticker;
+  final String name;
+  // final Icon icon;
+  final IconData icon;
+  // final bool switchState;
+
+  // const AssetWidget({this.ticker, this.name, this.icon, this.quantity});
+  const EnableDisableAssetWidget({this.ticker, this.name, this.icon});
+  @override
+  _EnableDisableAssetWidgetState createState() =>
+      _EnableDisableAssetWidgetState();
+}
+
+class _EnableDisableAssetWidgetState extends State<EnableDisableAssetWidget> {
+  bool isSwitched = false;
+  @override
+  Widget build(BuildContext context) {
+    return ColoredBox(
+      color: Color(0xff404040),
+      child: Row(
+        children: [
+          // Asset Icon - This should be a custom icon but I'm not sure how to pass it down yet
+          Icon(
+            widget.icon,
+            color: Color(0xff141414),
+          ),
+          Expanded(
+            /*1*/
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                /*2*/
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    widget.name,
+                    style: TextStyle(
+                      color: Color(0xFFDFDFDF),
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  //onTap: (),
+                  child: Text(
+                    widget.ticker,
+                    style: TextStyle(
+                      color: Color(0xFFDFDFDF),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          /*3*/
+          Switch(
+            value: isSwitched,
+            onChanged: (value) {
+              setState(() {
+                isSwitched = value;
+                print(isSwitched);
+              });
+            },
+            activeTrackColor: Colors.lightGreenAccent,
+            activeColor: Colors.green,
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 // Value Container
 Widget walletValueContainer = ColoredBox(
