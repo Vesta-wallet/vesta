@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:vesta/assets/pc_icons.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() {
   runApp(MaterialApp(
-    title: "Vesta",
-    home: HomePage(),
-  ));
+      title: "Vesta",
+      home: HomePage(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.orange,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.orange,
+      ),
+      themeMode: ThemeMode.dark));
 }
 
 class HomePage extends StatefulWidget {
@@ -15,6 +24,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // Initialize our value
+  Future<Balance> fetchBalance;
+
   int _currentIndex = 0;
   final List<Widget> _children = [
     homePage,
@@ -76,6 +88,34 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
+  }
+}
+
+// Get balances
+Future<Balance> fetchBalance() async {
+  final response = await http.get(
+      "https://btc1.trezor.io/api/v2/address/3ETUmNhL2JuCFFVNSpk8Bqx2eorxyP9FVh");
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return Balance.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 200 OK response,
+    // then throw an exception.
+    throw Exception('Failed to load album');
+  }
+}
+
+// Get our balance call
+class Balance {
+  // Initialize our balance
+  final double assetBalance;
+
+  Balance({this.assetBalance});
+  // Parse the JSON
+  factory Balance.fromJson(Map<String, dynamic> json) {
+    return Balance(assetBalance: json['balance']);
   }
 }
 

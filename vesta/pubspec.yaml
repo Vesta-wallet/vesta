@@ -73,9 +73,24 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: MyFlutterApp
-       fonts:
-         - asset: assets/icon/MyFlutterApp.ttf
+    - family: MyFlutterApp
+      fonts:
+        - asset: assets/icon/MyFlutterApp.ttf
+    - family: BellotaText
+      fonts:
+        - asset: fonts/BellotaText-Regular.ttf
+        - asset: fonts/BellotaText-Italic.ttf
+          style: italic
+        - asset: fonts/BellotaText-Bold.ttf
+          weight: 700
+        - asset: fonts/BellotaText-Light.ttf
+          weight: 300
+        - asset: fonts/BellotaText-BoldItalic.ttf
+          style: italic
+          weight: 700
+        - asset: fonts/Bellotatext-LightItalic.ttf
+          style: italic
+          weight: 300
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
