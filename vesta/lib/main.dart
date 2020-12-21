@@ -374,8 +374,8 @@ class _EnableDisableAssetWidgetState extends State<EnableDisableAssetWidget> {
                 print(isSwitched);
               });
             },
-            activeTrackColor: Colors.lightGreenAccent,
-            activeColor: Colors.green,
+            activeTrackColor: Colors.white,
+            activeColor: Color(0xFF74B62E),
           ),
         ],
       ),
