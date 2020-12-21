@@ -268,9 +268,6 @@ Widget profileSettings = Expanded(
       // Settings
       ProfileSettingsItem(
           menuItemName: "Settings", icon: MyFlutterApp.menu_exchange_black),
-      // Support
-      ProfileSettingsItem(
-          menuItemName: "Support", icon: MyFlutterApp.menu_exchange_black),
     ],
   ),
 );
