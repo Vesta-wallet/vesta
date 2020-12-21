@@ -3,6 +3,16 @@ import 'package:vesta/assets/pc_icons.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+// Dark theme constants
+// Vesta Green
+const PrimaryGreen = Color(0xFF74B62E);
+// Lightest Grey
+const PrimaryGrey = Color(0xFFDFDFDF);
+// Middle Grey
+const SecondaryGrey = Color(0xFF404040);
+// Darkest Grey
+const TertiaryGrey = Color(0xFF141414);
+
 void main() {
   runApp(MaterialApp(
       title: "Vesta",
@@ -13,7 +23,7 @@ void main() {
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.orange,
+        primarySwatch: PrimaryGreen,
       ),
       themeMode: ThemeMode.dark));
 }
