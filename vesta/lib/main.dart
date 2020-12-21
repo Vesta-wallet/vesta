@@ -161,12 +161,13 @@ Widget listOfAssets = Container(
     // Ticker, Name, Image url, coin quantity
     child: Column(children: [
   AssetWidget(
-      // Ticker name will go in here eventually
-      ticker: "BTC",
-      name: "Bitcoin",
-      // Not sure how to make this work
-      icon: MyFlutterApp.l_bitcoin,
-      quantity: "3.56"),
+    // Ticker name will go in here eventually
+    ticker: "BTC",
+    name: "Bitcoin",
+    // Not sure how to make this work
+    icon: MyFlutterApp.l_bitcoin,
+    quantity: "3.56",
+  ),
   AssetWidget(
       // Ticker name will go in here eventually
       ticker: "PPC",
@@ -202,49 +203,57 @@ class AssetWidget extends StatefulWidget {
 class _AssetWidgetState extends State<AssetWidget> {
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: Color(0xff404040),
-      child: Row(
-        children: [
-          // Asset Icon - This should be a custom icon but I'm not sure how to pass it down yet
-          Icon(
-            widget.icon,
-            color: Color(0xff141414),
-          ),
-          Expanded(
-            /*1*/
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                /*2*/
-                Container(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    widget.name,
-                    style: TextStyle(
-                      color: Color(0xFFDFDFDF),
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+    return Padding(
+        padding: EdgeInsets.fromLTRB(
+          WidgetsBinding.instance.window.physicalSize.width * 0.03,
+          WidgetsBinding.instance.window.physicalSize.width * 0.01,
+          WidgetsBinding.instance.window.physicalSize.width * 0.03,
+          WidgetsBinding.instance.window.physicalSize.width * 0.01,
+        ),
+        child: ColoredBox(
+          color: Color(0xff404040),
+          child: Row(
+            children: [
+              // Asset Icon - This should be a custom icon but I'm not sure how to pass it down yet
+              Padding(
+                padding: EdgeInsets.all(
+                    WidgetsBinding.instance.window.physicalSize.width * 0.03),
+                child: Icon(
+                  widget.icon,
+                  color: Color(0xff74B62E),
+                  size: 30,
                 ),
-                GestureDetector(
-                  //onTap: (),
-                  child: Text(
-                    widget.ticker,
-                    style: TextStyle(
-                      color: Color(0xFFDFDFDF),
+              ),
+              Expanded(
+                /*1*/
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.name,
+                      style: TextStyle(
+                        color: Color(0xFFDFDFDF),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
+                    Text(
+                      widget.ticker,
+                      style: TextStyle(
+                        color: Color(0xFFDFDFDF),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(
+                    WidgetsBinding.instance.window.physicalSize.width * 0.03),
+                child: Text(widget.quantity,
+                    style: TextStyle(color: Color(0xFFDFDFDF))),
+              ),
+            ],
           ),
-          /*3*/
-
-          Text(widget.quantity, style: TextStyle(color: Color(0xFFDFDFDF))),
-        ],
-      ),
-    );
+        ));
   }
 }
 
