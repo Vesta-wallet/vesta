@@ -27,6 +27,8 @@ void main() {
       scaffoldBackgroundColor: TertiaryGrey,
       // Custom font family
       fontFamily: "BellotaText",
+      // Unselected Nav item color
+      unselectedWidgetColor: PrimaryGrey,
       // themeMode: darkTheme
     ),
   ));
@@ -77,8 +79,7 @@ class _HomePageState extends State<HomePage> {
         // Set the background color of the navigation bar
         backgroundColor: Color(0xff74B62E),
         // Set the unselected color of the icons
-        unselectedItemColor: Color(0xFFDFDFDF),
-        selectedItemColor: Color(0xFF141414),
+        selectedItemColor: TertiaryGrey,
         // Hide the labels of the selected menu item because we don't need them
         showSelectedLabels: false,
         showUnselectedLabels: false,
