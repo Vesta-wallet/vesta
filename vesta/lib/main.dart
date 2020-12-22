@@ -15,17 +15,21 @@ const TertiaryGrey = Color(0xFF141414);
 
 void main() {
   runApp(MaterialApp(
-      title: "Vesta",
-      home: HomePage(),
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primarySwatch: Colors.orange,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: PrimaryGreen,
-      ),
-      themeMode: ThemeMode.dark));
+    title: "Vesta",
+    home: HomePage(),
+    // theme: ThemeData(
+    //   brightness: Brightness.light,
+    //   primarySwatch: Colors.orange,
+    // ),
+    theme: ThemeData(
+      brightness: Brightness.dark,
+      // primarySwatch: PrimaryGreen,
+      scaffoldBackgroundColor: TertiaryGrey,
+      // Custom font family
+      fontFamily: "BellotaText",
+      // themeMode: darkTheme
+    ),
+  ));
 }
 
 class HomePage extends StatefulWidget {
@@ -53,7 +57,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF141414),
       appBar: AppBar(
         // This needs to be the logo
         leading: Icon(
