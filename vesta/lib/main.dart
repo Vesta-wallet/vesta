@@ -28,7 +28,7 @@ void main() {
       // Custom font family
       fontFamily: "BellotaText",
       // Unselected Nav item color
-      unselectedWidgetColor: PrimaryGrey,
+      unselectedWidgetColor: TertiaryGrey,
       // themeMode: darkTheme
     ),
   ));
@@ -60,26 +60,22 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         // This needs to be the logo
-        leading: Icon(
+        title: const Icon(
           MyFlutterApp.logo_vesta,
           color: Color(0xFF74B62E),
         ),
-        actions: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-          ),
-          Icon(Icons.more_vert, color: Color(0xFF74B62E)),
-        ],
         backgroundColor: Color(0xff141414),
       ),
       body: Center(child: _children[_currentIndex]),
       // Make our bottom navigation bar
       bottomNavigationBar: BottomNavigationBar(
         // Set the background color of the navigation bar
-        backgroundColor: Color(0xff74B62E),
+        backgroundColor: Color(0xff404040),
         // Set the unselected color of the icons
-        selectedItemColor: TertiaryGrey,
+        selectedItemColor: PrimaryGreen,
+        unselectedItemColor: TertiaryGrey,
         // Hide the labels of the selected menu item because we don't need them
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -175,8 +171,6 @@ Widget homePage = Column(
 
 // Wallet page
 Widget walletPage = Column(children: [
-  //
-  walletValueContainer,
   // Turn on/off coins here
   SectionTitle(title: "ACTIVITY"),
   transactionActivity,
@@ -194,23 +188,6 @@ Widget transactionPage = Column(
     //
   ],
 );
-
-// Value Container
-Widget homeValueContainer = ColoredBox(
-    color: Color(0xff404040),
-    //padding: const EdgeInsets.all(32),
-    child: Container(
-        padding: const EdgeInsets.all(32),
-        child: (Text(
-            // This will need to be passed the actual value of the portfolio
-            // It will be $_portfolioValue at some point
-            '\u0024 89,563.54',
-            softWrap: false,
-            // Set the style
-            style: TextStyle(
-              color: Color(0xffDFDFDF),
-              fontSize: 25,
-            )))));
 
 // List of Assets Container
 Widget listOfAssets = Container(
@@ -259,57 +236,72 @@ class AssetWidget extends StatefulWidget {
 class _AssetWidgetState extends State<AssetWidget> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: EdgeInsets.fromLTRB(
-          WidgetsBinding.instance.window.physicalSize.width * 0.03,
-          WidgetsBinding.instance.window.physicalSize.width * 0.01,
-          WidgetsBinding.instance.window.physicalSize.width * 0.03,
-          WidgetsBinding.instance.window.physicalSize.width * 0.01,
+    return Container(
+      width: MediaQuery.of(context).size.width * .9,
+      height: 46,
+      child: Container(
+        width: MediaQuery.of(context).size.width * .9,
+        height: 46,
+        color: Color(0xff404040),
+        padding: const EdgeInsets.only(
+          top: 6,
+          bottom: 8,
         ),
-        child: ColoredBox(
-          color: Color(0xff404040),
-          child: Row(
-            children: [
-              // Asset Icon - This should be a custom icon but I'm not sure how to pass it down yet
-              Padding(
-                padding: EdgeInsets.all(
-                    WidgetsBinding.instance.window.physicalSize.width * 0.03),
-                child: Icon(
-                  widget.icon,
-                  color: Color(0xff74B62E),
-                  size: 30,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: 30.86,
+              height: 30.86,
+              child: Icon(
+                widget.icon,
+                color: Color(0xff74B62E),
+                size: 30,
+              ),
+            ),
+            SizedBox(width: 22.92),
+            Column(children: [
+              Text(
+                widget.ticker,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Color(0xffdfdfdf),
+                  fontSize: 13,
                 ),
               ),
-              Expanded(
-                /*1*/
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.name,
-                      style: TextStyle(
-                        color: Color(0xFFDFDFDF),
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      widget.ticker,
-                      style: TextStyle(
-                        color: Color(0xFFDFDFDF),
-                      ),
-                    ),
-                  ],
+              Text(
+                widget.name,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Color(0xffdfdfdf),
+                  fontSize: 10,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(
-                    WidgetsBinding.instance.window.physicalSize.width * 0.03),
-                child: Text(widget.quantity,
-                    style: TextStyle(color: Color(0xFFDFDFDF))),
+            ]),
+            SizedBox(width: 22.92),
+            Column(children: [
+              Text(
+                // Usd quantity
+                "75,651.21",
+                style: TextStyle(
+                  color: Color(0xffdfdfdf),
+                  fontSize: 13,
+                ),
               ),
-            ],
-          ),
-        ));
+              Text(
+                widget.quantity,
+                style: TextStyle(
+                  color: Color(0xffdfdfdf),
+                  fontSize: 10,
+                ),
+              ),
+            ])
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -319,29 +311,78 @@ Widget profileSettings = Expanded(
     // Menu items
     children: [
       // Security
-      ProfileSettingsItem(
-          menuItemName: "Security", icon: MyFlutterApp.menu_exchange_black),
+      ProfileSettingsItem(menuItemName: "Security"),
       // Settings
-      ProfileSettingsItem(
-          menuItemName: "Settings", icon: MyFlutterApp.menu_exchange_black),
+      ProfileSettingsItem(menuItemName: "Settings"),
     ],
   ),
 );
 
 class ProfileSettingsItem extends StatelessWidget {
   final String menuItemName;
-  final IconData icon;
 
-  ProfileSettingsItem({@required this.menuItemName, @required this.icon});
+  ProfileSettingsItem({@required this.menuItemName});
   @override
   Widget build(BuildContext content) {
-    return ColoredBox(
+    return Container(
+      width: 301,
+      height: 60,
+      child: Container(
+        width: 301,
+        height: 60,
         color: Color(0xff404040),
-        //padding: const EdgeInsets.all(32),
-        child: Container(
-          padding: const EdgeInsets.all(32),
-          child: Text(menuItemName),
-        ));
+        padding: const EdgeInsets.only(
+          left: 9,
+          right: 203,
+          top: 10,
+          bottom: 2,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 26.89,
+              height: 26.85,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: Opacity(
+                        opacity: 0.50,
+                        child: Container(
+                          width: 9.97,
+                          height: 12.32,
+                          color: Color(0xff74b62e),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Opacity(
+                    opacity: 0.50,
+                    child: Container(
+                      width: 26.89,
+                      height: 26.85,
+                      color: Color(0xff74b62e),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 3.61),
+            Text(
+              menuItemName,
+              style: TextStyle(
+                color: Color(0xff74b62e),
+                fontSize: 15,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -440,22 +481,40 @@ class _EnableDisableAssetWidgetState extends State<EnableDisableAssetWidget> {
 }
 
 // Value Container
-Widget walletValueContainer = ColoredBox(
+Widget homeValueContainer = ColoredBox(
     color: Color(0xff404040),
     //padding: const EdgeInsets.all(32),
-    child: Container(
-      padding: const EdgeInsets.all(32),
-      child: Text(
-          // This will need to be passed the actual value of the portfolio
-          // It will be $_portfolioValue at some point
-          '\u0024 31,568.45 USDT',
-          softWrap: false,
-          // Set the style
-          style: TextStyle(
-            color: Color(0xffDFDFDF),
-            fontSize: 25,
-          )),
-    ));
+    child: Column(children: [
+      Column(children: [
+        Icon(
+          MyFlutterApp.l_bitcoin,
+          color: Color(0xff141414),
+        ),
+        // Quantity
+        Text("654.5446",
+            style: TextStyle(
+              color: Color(0xff74B62E),
+              fontSize: 25,
+            )),
+        // Fiat value
+        Text(
+            // This will need to be passed the actual value of the portfolio
+            // It will be $_portfolioValue at some point
+            '\u0024 31,568.45 USD',
+            softWrap: false,
+            // Set the style
+            style: TextStyle(
+              color: Color(0xff74B62E),
+              fontSize: 15,
+            )),
+      ]),
+      Row(
+          // children: [
+          // Receive
+          // Balance
+          // ]
+          )
+    ]));
 
 // Transaction Activity
 Widget transactionActivity =
