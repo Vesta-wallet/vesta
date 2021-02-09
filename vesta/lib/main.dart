@@ -3,6 +3,11 @@ import 'package:vesta/assets/pc_icons.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+// Hive code
+import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 // Dark theme constants
 // Vesta Green
 const PrimaryGreen = Color(0xFF74B62E);
